@@ -1,39 +1,39 @@
-<p><H3>ESP32S3�ɂ��C���^�[�l�b�g���W�I</H3></p>
+<p><H3>ESP32S3によるインターネットラジオ</H3></p>
 <p>
-MP3�X�g���[����I2S�f�[�^�փf�R�[�h�ł���<a href="https://github.com/schreibfaul1/ESP32-audioI2S">���C�u����</a>�𗘗p�����ȒP�\���̃C���^�[�l�b�g���W�I�ł��B<br>
-ESP32S3��I2S DAC�A�\�����u������ΐ���ł��܂��B�R�[�h��<a href="https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/">Seeed Studio XIAO ESP32S3</a>�ɑΉ����Ă��܂��B<br>
-Web�T�[�o�[�𓋍ڂ��Ă���̂ŁA�u���E�U���瑀��ł��܂��i�^�N�g�X�C�b�`�̓I�v�V�����j�B<br>
-Arduino IDE�i2.1.0�j��<a href="https://github.com/espressif/arduino-esp32">ESP32�J�����i2.0.17�j</a>���K�v�ł��B
+MP3ストリームをI2Sデータへデコードできる<a href="https://github.com/schreibfaul1/ESP32-audioI2S">ライブラリ</a>を利用した簡単構成のインターネットラジオです。<br>
+ESP32S3とI2S DAC、表示装置があれば製作できます。コードは<a href="https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/">Seeed Studio XIAO ESP32S3</a>に対応しています。<br>
+Webサーバーを搭載しているので、ブラウザから操作できます（タクトスイッチはオプション）。<br>
+Arduino IDE（2.1.0）と<a href="https://github.com/espressif/arduino-esp32">ESP32開発環境（2.0.17）</a>が必要です。
 </p>
 
-<p><strong>����</strong><br>
- �E�\�����ȒP�ň����B<br>
- �EWiFi�ڑ��B<br>
- �EMP3�X�g���[���̃C���^�[�l�b�g���W�I�ǂ���M�ł���B<br>
- �E�u���E�U���瑀��ł���i�������m�F���Ȃ���������Ƒ��삷��j�B�^�N�g�X�C�b�`�̐ڑ����\�i�R�[�h��̒�`�͂��Ă���j�B<br>
- �E�u���E�U�ɃA�[�e�B�X�g���A�Ȗ����\���i���{��j�����i�\�����u�ł͓��{��͕s�j�B<br>
- �E�C���^�[�l�b�g���W�I�ǂ̐ݒ�̓v���Z�b�g�܂���URL����͐ݒ�i�ݒ�͕ۑ������j�B<br>
- �E�����\���i1,2�s�ڂɐ؂�ւ��\���j�ƃX���[�v�^�C�}�[�i�U�O���j�t���B�X���[�v�^�C�}�[�̎c�莞�Ԃ͕\�����u��1�s�ڂɕ\���iSLPmm�j�����B<br>
+<p><strong>特長</strong><br>
+ ・構成が簡単で安価。<br>
+ ・WiFi接続。<br>
+ ・MP3ストリームのインターネットラジオ局を受信できる。<br>
+ ・ブラウザから操作できる（応答を確認しながらゆっくりと操作する）。タクトスイッチの接続も可能（コード上の定義はしてある）。<br>
+ ・ブラウザにアーティスト名、曲名が表示（日本語可）される（表示装置では日本語は不可）。<br>
+ ・インターネットラジオ局の設定はプリセットまたはURLを入力設定（設定は保存される）。<br>
+ ・時刻表示（1,2行目に切り替え表示）とスリープタイマー（６０分）付き。スリープタイマーの残り時間は表示装置の1行目に表示（SLPmm）される。<br>
 </p>
-<p><strong>H/W�\��</strong><br>
- �ESeeed Studio XIAO ESP32S3�i����ESP32S3�ł�GPIO�̐ڑ���ύX����Γ��삷��\������j<br>
- �E<a href="xiao_esp32s3_pcm5102_uda1334.JPG">UDA1334 I2S DAC �u���[�N�A�E�g��� �܂���PCM5102 I2S DAC �u���[�N�A�E�g���</a><br>
-   ���ӓ_�Ƃ��āAPCM5102��̗��ʂ�<a href="xiao_esp32s3_jumper.JPG">1����4�̃n���__�W�����p�[</a>������A�ݒ�(3��H�A����L)���Ă����K�v�����邪�A�n���_�u���b�W�������������B<br>
-   �Ȃ�PCM5102�̓X�s�[�J�[��炷�ɂ̓p���[�s���BUDA1334�͏����ʂŗǂ��Ȃ�OK�B<br>
- �ESD1306 128x64 OLED�\�����u<br>
+<p><strong>H/W構成</strong><br>
+ ・Seeed Studio XIAO ESP32S3（他のESP32S3ではGPIOの接続を変更すれば動作する可能性あり）<br>
+ ・<a href="xiao_esp32s3_pcm5102_uda1334.JPG">UDA1334 I2S DAC ブレークアウト基板 またはPCM5102 I2S DAC ブレークアウト基板</a><br>
+   注意点として、PCM5102基板の裏面に<a href="xiao_esp32s3_jumper.JPG">1から4のハンダ_ジャンパー</a>があり、設定(3はH、他はL)しておく必要があるが、ハンダブリッジが無い基板もある。<br>
+   なおPCM5102はスピーカーを鳴らすにはパワー不足。UDA1334は小音量で良いならOK。<br>
+ ・SD1306 128x64 OLED表示装置<br>
 </p>
 <p>
-<img src="xiao_esp32s3_iradio.jpg" width="300" height="380">
-<p>�����XIAO ESP32S3��I2C�Ή��̕��𗬗p�B���퓮�쎞�͉�LED����S�b�Ԋu�œ_�ŁA�ʐ^�ł̓^�N�g�X�C�b�`�͖��ڑ�</p>
+<img src="xiao_esp32s3_iradio.JPG" width="300" height="380">
+<p>※基板はXIAO ESP32S3とI2C対応の物を流用。正常動作時は黄LEDが約４秒間隔で点滅、写真ではタクトスイッチは未接続</p>
 </p>
-<p><strong>����</strong><br>
- �E�v���Z�b�g�����C���^�[�l�b�g���W�I�ǂ̐؂�ւ��i�u���E�U�^�^�N�g�X�C�b�`�j�B<br>
- �E���ʒ����i�u���E�U�^�^�N�g�X�C�b�`�j�B<br>
- �E�X���[�v�^�C�}�[��ON/OFF�i�u���E�U�^�^�N�g�X�C�b�`�j�B<br>
- �E�C���^�[�l�b�g���W�I�ǂ�URL���́A�ݒ�i�e�X�g�j�ƕۑ��i�u���E�U�j�B<br>
+<p><strong>操作</strong><br>
+ ・プリセットしたインターネットラジオ局の切り替え（ブラウザ／タクトスイッチ）。<br>
+ ・音量調整（ブラウザ／タクトスイッチ）。<br>
+ ・スリープタイマーのON/OFF（ブラウザ／タクトスイッチ）。<br>
+ ・インターネットラジオ局のURL入力、設定（テスト）と保存（ブラウザ）。<br>
 </p>
-<p><strong>�ڑ�</strong><br>
-<p>�e�R���|�[�l���g�̐ڑ��͈ȉ��̒ʂ�B<br>
+<p><strong>接続</strong><br>
+<p>各コンポーネントの接続は以下の通り。<br>
 </p>
 <p>
 I2S DAC
@@ -62,7 +62,7 @@ I2S DAC
 </table>
 </p>
 <p>
-I2C �\�����u
+I2C 表示装置
 <table> 
 <tr>
 <td>I2C&nbsp;</td><td>ESP32S3</td>
@@ -82,58 +82,58 @@ I2C �\�����u
 </table>
 </P>
 <p>
-�^�N�g�X�C�b�`�i�{�^���j
-���u���E�U���瑀��ł���̂Ŗ����Ă�OK�B
+タクトスイッチ（ボタン）
+※ブラウザから操作できるので無くてもOK。
 <table> 
 <tr>
-<td>�@�\&nbsp;</td><td>ESP32S3&nbsp;</td><td>�@�\</td>
+<td>機能&nbsp;</td><td>ESP32S3&nbsp;</td><td>機能</td>
 </tr>
 <tr>
-<td>SLEEP</td><td>GPIO1</td></td><td>SLEEP�@�\��ON/OFF</td>
+<td>SLEEP</td><td>GPIO1</td></td><td>SLEEP機能のON/OFF</td>
 </tr>
 <tr>
-<td>VOL-</td><td>GPIO4</td><td>���ʏ��i�ŏ�0�A�X�e�b�v��5�j</td>
+<td>VOL-</td><td>GPIO4</td><td>音量小（最小0、ステップは5）</td>
 </tr>
 <tr>
-<td>VOL+</td><td>GPIO2</td><td>���ʑ�i�ő�50�j</td>
+<td>VOL+</td><td>GPIO2</td><td>音量大（最大50）</td>
 <tr>
 <tr>
-<td>STATION</td><td>GPIO8</td><td>�C���^�[�l�b�g���W�I�ǂ��u���ցv�؂�ւ��B�Ō�̏ꍇ�͐擪�ɖ߂�B</td>
+<td>STATION</td><td>GPIO8</td><td>インターネットラジオ局を「次へ」切り替え。最後の場合は先頭に戻る。</td>
 <tr>
 </table>
 </p>
 </p>
-<p><strong>�C���X�g�[��</strong><br>
+<p><strong>インストール</strong><br>
 <ol>
-<li>ArduinoIDE�ɂ����ă��C�u�����iESP32_audioI2S�Ȃǁj�𓱓�</li>
-<li>�{�R�[�h���AZIP�`���Ń_�E�����[�h�i���쎞�̃I���W�i����ESP32_audioI2S�̃��C�u��������荞��ł���j</li>
-<li>ArduinoIDE����xiao_esp32s3_ssd1306_inet_radio_master.ino���J��</li>
-<li>ArduinoIDE�̃{�[�h�}�l�[�W������xiao_esp32s3��I��</li>
-<li>�`����ssid = "xxxxxxxx"; �� password = "pppppppp"; ��2�s��<br>���p���Ă���WiFi�|�C���g�̂��̂ɏ���������</li>
-<li>�u���؁E�R���p�C���v�ɐ���������A��U�A�u���O��t���ĕۑ��v���s��<br>
-�i���C�u�������s���̃G���[���o����A�ǉ�����B�Ⴆ�΁ASD1306 OLED�\�����u�j
+<li>ArduinoIDEにおいてライブラリ（ESP32_audioI2Sなど）を導入</li>
+<li>本コードを、ZIP形式でダウンロード（製作時のオリジナルのESP32_audioI2Sのライブラリを取り込んでいる）</li>
+<li>ArduinoIDEからxiao_esp32s3_ssd1306_inet_radio_master.inoを開く</li>
+<li>ArduinoIDEのボードマネージャからxiao_esp32s3を選択</li>
+<li>冒頭のssid = "xxxxxxxx"; と password = "pppppppp"; の2行を<br>利用しているWiFiポイントのものに書き換える</li>
+<li>「検証・コンパイル」に成功したら、一旦、「名前を付けて保存」を行う<br>
+（ライブラリが不足のエラーが出たら、追加する。例えば、SD1306 OLED表示装置）
 </li>
-<li>��ɏq�ׂ�H/W�\���iXIAO ESP32S3�ƕ\�����u��DAC���K�v�j��p�ӂ��A�z����ڑ�����</li>
-<li>PC��USB�P�[�u���Őڑ�����BXIAO ESP32S3��BOOT�{�^�����������܂܁ARESET�{�^���������ė����A����BOOT�{�^�������B����ŃA�b�v���[�h�҂��ɂȂ�B<br>�K����COM�ԍ��ŔF�������̂őI������iUSB�̃h���C�o���K�v�ȏꍇ����j</li>
-<li>�u�A�b�v���[�h�v���s��</li>
-<li>�������݂�����������ARESET�{�^���������΁A������J�n���A�󋵂��V���A�����j�^�i���邢�͕\�����u�j�ɕ\�������</li>
-<li>WiFi�ڑ����AIP�A�h���X���V���A�����j�^�i���邢�͋N�����ɒZ���ԁA�\�����u�j�ɕ\�������B�u���E�U����"http://IP�A�h���X"��<br>�A�N�Z�X����ƈȉ��̉�ʂ��\�������<br>
+<li>上に述べたH/W構成（XIAO ESP32S3と表示装置とDACが必要）を用意し、配線を接続する</li>
+<li>PCとUSBケーブルで接続する。XIAO ESP32S3のBOOTボタンを押したまま、RESETボタンを押して離す、次にBOOTボタン離す。これでアップロード待ちになる。<br>適当なCOM番号で認識されるので選択する（USBのドライバが必要な場合あり）</li>
+<li>「アップロード」を行う</li>
+<li>書き込みが成功した後、RESETボタンを押せば、動作を開始し、状況がシリアルモニタ（あるいは表示装置）に表示される</li>
+<li>WiFi接続時、IPアドレスがシリアルモニタ（あるいは起動時に短時間、表示装置）に表示される。ブラウザから"http://IPアドレス"に<br>アクセスすると以下の画面が表示される<br>
 </li>
 </ol>
 </p>
 <p>
-<p>�ڑ����̃C���^�[�l�b�g���W�I�ǂ�URL�A�A�[�e�B�X�g���A�Ȗ��AVOLUME�̒l�A�v���Z�b�g�ς̃C���^�[�l�b�g���W�I�ǂ�URL���\������Ă���<br>
+<p>接続中のインターネットラジオ局のURL、アーティスト名、曲名、VOLUMEの値、プリセット済のインターネットラジオ局のURLが表示されている<br>
 </p>
 <p>
 <img src="xiao_esp32s3_iradio_web.png" width="600" height="400">
-<p>�uControl Functions�v�ɂ͉��ʁA�X�e�[�V�����ύX�A�X���[�v�@�\�̊e����̃{�^��������B�uStation URL�v�Ɉꎞ�I�ȃC���^�[�l�b�g���W�I�ǂ�URL���w��ł��A<br>
-�uTEST SET�v�{�^���������Ď�MOK�̏ꍇ�A�擪�̓��̓t�B�[���h�ɃG���g���ԍ��A2�Ԗڂ̓��̓t�B�[���h�ɃX�e�[�V�������i10�����ȓ��j���w�肵�A<br>
-�uSAVE�v���N���b�N����ƁA�擪�̓��̓t�B�[���h�Ɏw�肵���ԍ��̃G���g���ɕۑ�����āA����̃p���[�I�����ɁuStation List�v�ɕ\�������B<br>
+<p>「Control Functions」には音量、ステーション変更、スリープ機能の各操作のボタンがある。「Station URL」に一時的なインターネットラジオ局のURLを指定でき、<br>
+「TEST SET」ボタンを押して受信OKの場合、先頭の入力フィールドにエントリ番号、2番目の入力フィールドにステーション名（10文字以内）を指定し、<br>
+「SAVE」をクリックすると、先頭の入力フィールドに指定した番号のエントリに保存されて、次回のパワーオン時に「Station List」に表示される。<br>
 </p>
 </p>
-<p><strong>���ӎ���</strong><br>
-<p>�E����󋵁A�C���^�[�l�b�g���W�I�ǂ̃f�[�^�X�g���[���`���ɂ���Ă͉����r�؂�邱�Ƃ�����܂��B<br>
-�E���܂ɉ�����ؒf����邱�ƁiLED����1�b�Ԋu�œ_�Łj������܂����A���̏ꍇ�̓C���^�[�l�b�g���W�I�ǂ̐؂�ւ����s���Ă݂Ă��������i�����������ꍇ��RESET�ł��j�B<br>
-�E�N������"WiFi Err"���\�����ꂽ�ꍇ�A5���Ԋu�Ń��g���C���܂����A�ڑ��ł��Ȃ��ꍇ��WiFi�@��Ȃǂ̖��������K�v�ɂȂ邩������܂���B<br>
-�E���p�̍ۂ́A���ȐӔC�ł��y���݂��������B</p>
+<p><strong>注意事項</strong><br>
+<p>・回線状況、インターネットラジオ局のデータストリーム形式によっては音が途切れることがあります。<br>
+・たまに回線が切断されること（LEDが約1秒間隔で点滅）がありますが、その場合はインターネットラジオ局の切り替えを行ってみてください（応答が無い場合はRESETです）。<br>
+・起動時に"WiFi Err"が表示された場合、5分間隔でリトライしますが、接続できない場合はWiFi機器などの問題解決が必要になるかもしれません。<br>
+・利用の際は、自己責任でお楽しみください。</p>
 </P>
